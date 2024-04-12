@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a new Blog</title>
+    <link rel="stylesheet" href="/styles.css" >
+
+</head>
+<body>
+    <div class="container">
+        <h3>Create a New Blog</h3>
+        <form class="post-form" method="post" action="/posts"> <!-- jaise hi submit hoga, send a post request to "/posts" --> 
+            <input type="text" placeholder="Enter username" name="username" >
+            <br><br>
+            <textarea type="text" placeholder="Enter content" name="content" rows="15" cols="10"></textarea>
+            <br><br>
+            <button class="button">Post Blog</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .post-form {
+            margin-top: 20px;
+        }
+
+        .username-label {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .post-form textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .post-form button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .post-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <h3>Edit Blog</h3>
+        <form class="post-form" method="POST" action="/posts/<%= post.id %>?_method=PATCH">
+            <h4 class="username-label">Author: <%= post.username %></h4>
+            <textarea name="content" rows="10"><%= post.content %></textarea> 
+            <button>Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

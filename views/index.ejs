@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Gallery</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Blogs Gallery</h2>
+        <% function formatDate(dateString) { %>
+            <% const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }; %>
+            <% return new Date(dateString).toLocaleDateString('en-US', options); %>
+        <% } %>
+        <% if(posts.length===0){ %>
+            <h3 class="no-blogs-message">No Blogs to Show</h3>
+        <% } else { %>
+        <% for(post of posts) { %>
+            <div class="user-info">
+                <div class="post-head">
+                    <h3><%= post.username %></h3>
+                    <!-- on clicking delete btn, DELETE req is sent to the "/posts/:id" -->
+                    <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+                        <button type="submit" class="del-button">Delete Blog</button>
+                    </form>
+                </div>
+                <p><%= post.content %></p>
+                <div class="post-footer">
+                    <div>
+                        <a href="http://localhost:3000/posts/<%= post.id %>"><button class="btn-blue">View Blog</button></a>
+                        <a href="http://localhost:3000/posts/<%= post.id %>/edit"><button class="button">Edit Blog</button></a> <!-- clicking this sends get req to that path -->
+                    </div>
+                    <p class="post-date">Posted on <%= formatDate(post.createdAt) %></p> <!-- Adding date and time -->
+                </div>
+            </div>
+        <% } %>
+        <% } %>
+    </div>
+    <div class="container">
+        <a href="http://localhost:3000/posts/new"><button class="button">Create New Blog</button></a>
+    </div>
+</body>
+</html>
