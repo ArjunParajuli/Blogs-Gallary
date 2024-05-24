@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express();
+require('dotenv').config()
 
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 // so that data coming from client side can be understood by express
 app.use(express.urlencoded({extended: true})); // parses the received data
